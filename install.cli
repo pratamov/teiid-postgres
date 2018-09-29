@@ -1,3 +1,4 @@
+embed-server --std-out=echo --server-config=standalone-teiid.xml
 batch
 module add --name=org.postgresql --resources=/tmp/postgresql.jar --dependencies=javax.api,javax.transaction.api
 /subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql,driver-module-name=org.postgresql,driver-class-name=org.postgresql.Driver)
