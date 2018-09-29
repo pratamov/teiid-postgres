@@ -9,7 +9,7 @@ COPY install.cli /tmp/
 RUN sed -i -e 's/\r$//' ./setup.sh
 RUN chmod +x ./setup.sh
 RUN ./setup.sh &&  rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history/
-RUN /opt/jboss/wildfly/bin/add-user.sh admin admin --silent
+RUN /opt/jboss/wildfly/bin/add-user.sh admin Admin123! --silent
 
 USER jboss
 
