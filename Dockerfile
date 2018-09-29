@@ -4,9 +4,9 @@ USER root
 WORKDIR /tmp
 ADD https://jdbc.postgresql.org/download/postgresql-42.2.4.jar /tmp/postgresql.jar
 COPY setup.sh ./
-COPY install.cli /tmp/
+COPY install.cli ./
 RUN sed -i -e 's/\r$//' ./setup.sh
-RUN chmod +x ./setup.sh && chown jboss setup.sh && chown jboss install.cli
+RUN chmod +x ./setup.sh && chown jboss setup.sh && chown jboss install.cli && chown jboss postgresql.jar
 
 USER jboss
 RUN ./setup.sh
