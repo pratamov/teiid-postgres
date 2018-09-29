@@ -1,5 +1,7 @@
 FROM jboss/teiid
 
+RUN /opt/jboss/wildfly/bin/add-user.sh admin Admin123! --silent
+
 USER root
 
 ADD https://jdbc.postgresql.org/download/postgresql-42.2.4.jar /tmp/postgresql.jar
@@ -11,6 +13,5 @@ RUN chmod +x ./setup.sh
 RUN ./setup.sh &&  rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history/
 
 USER jboss
-RUN /opt/jboss/wildfly/bin/add-user.sh admin Admin123! --silent
 
 CMD ["/bin/sh", "-c", "$JBOSS_HOME/bin/standalone.sh -c standalone-teiid.xml -b 0.0.0.0 -bmanagement 0.0.0.0"]
